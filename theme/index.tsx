@@ -22,15 +22,19 @@ const theme = createMuiTheme({
     MuiButton: {
       root: {
         textTransform: 'none',
-        fontSize: 16
+        fontSize: 14
       },
       containedPrimary: {
         '&:hover': {
           boxShadow: 'none',
-          backgroundColor: '#17b159'
+          backgroundColor: colors.primary.main
         },
         boxShadow: 'none',
         color: 'white'
+      },
+      outlinedSecondary: {
+        color: colors.gray.main,
+        border: `1px solid rgba(0, 0, 0, 0.23) !important`
       }
     }
   }

@@ -7,6 +7,9 @@ const colors = {
   },
   background: {
     main: '#008c3c'
+  },
+  gray: {
+    main: '#3d3d3d'
   }
 }
 

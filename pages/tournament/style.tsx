@@ -7,19 +7,17 @@ const useStyles = makeStyles(theme => ({
     margin: '0px 24px',
     backgroundColor: theme.palette.secondary.main
   },
-  infoContainer: {
-    padding: 12
+  button: {
+    '@media (max-width: 380px )': {
+      marginBottom: 24
+    }
   },
-  infoTitle: {
-    marginBottom: 8,
-    fontWeight: 600,
-    color: theme.palette.primary.main
-  },
-  contentActionButtons: {
+  containerSubtitle: {
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    '@media (max-width: 600px )': {
-      justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    '@media (max-width: 380px )': {
+      flexDirection: 'column-reverse',
+      alignItems: 'initial'
     }
   }
 }))

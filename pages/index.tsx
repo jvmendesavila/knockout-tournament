@@ -14,11 +14,6 @@ const buttons = [
     label: 'Criar novo torneio',
     icon: <PlaylistAddIcon style={{ fontSize: 32 }} />
   }
-  // {
-  //   link: '/tournament/list',
-  //   label: 'Ver Torneios',
-  //   icon: <ListIcon style={{ fontSize: 32 }} />
-  // }
 ]
 
 const Home: React.FC = () => {

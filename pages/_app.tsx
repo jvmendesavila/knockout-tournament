@@ -1,9 +1,19 @@
 import React, { useEffect } from 'react'
 import { AppProps } from 'next/app'
+
+// Material UI
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
+
+// Theme
 import theme from '../theme'
-import Header from '../components/header'
+
+// Alert
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+// Custom Components
+import Header from '../components/Header'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -19,6 +29,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       <CssBaseline />
       <Header />
       <Component {...pageProps} />
+      <ToastContainer />
     </ThemeProvider>
   )
 }

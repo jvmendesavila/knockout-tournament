@@ -1,12 +1,16 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+
+// Material UI
 import { ServerStyleSheets } from '@material-ui/core/styles'
+
+// Theme
 import theme from '../theme'
 
 class MyDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html lang="en">
+      <Html lang="pt-BR">
         <title>Knockout Tournament</title>
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />

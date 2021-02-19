@@ -4,9 +4,8 @@ const useStyles = makeStyles(theme => ({
   container: {
     top: 0,
     zIndex: 2,
-    position: 'sticky',
-    backgroundColor: theme.palette.secondary.main,
-    marginBottom: 32
+    position: 'fixed',
+    backgroundColor: theme.palette.secondary.main
   },
   containerLogo: {
     display: 'flex',
