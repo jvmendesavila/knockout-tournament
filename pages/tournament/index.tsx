@@ -5,7 +5,7 @@ import { Button, Grid, Typography } from '@material-ui/core'
 import PlayerList from '../../components/Player/PlayerList'
 
 // Types
-import { PlayerType } from '../../types/player'
+import { PlayerFormType } from '../../types/player'
 
 // Style
 import useStyle from './style'
@@ -15,8 +15,8 @@ import PlayerForm from '../../components/Form/PlayerForm'
 const Tournament: React.FC = () => {
   const classes = useStyle()
   const [open, setOpen] = useState(false)
-  const [player, setPlayer] = useState<PlayerType>()
-  const [players, setPlayers] = useState<PlayerType[]>([])
+  const [player, setPlayer] = useState<PlayerFormType>()
+  const [players, setPlayers] = useState<PlayerFormType[]>([])
 
   useEffect(() => {
     const playersLS = JSON.parse(localStorage.getItem('players'))

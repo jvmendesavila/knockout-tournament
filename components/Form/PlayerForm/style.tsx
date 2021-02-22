@@ -2,7 +2,6 @@ import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   formContainer: {
-    minWidth: 280,
     marginBottom: 24,
     maxWidth: 360,
     padding: 16

@@ -12,13 +12,13 @@ import useStyle from './style'
 import { toast } from 'react-toastify'
 
 // Types
-import { PlayerType } from '../../../types/player'
+import { PlayerFormType } from '../../../types/player'
 import FormTextField from '../FormTextField'
 
 interface PlayerFormType {
-  player?: PlayerType
-  setPlayer: Dispatch<SetStateAction<PlayerType>>
-  setPlayers: Dispatch<SetStateAction<PlayerType[]>>
+  player?: PlayerFormType
+  setPlayer: Dispatch<SetStateAction<PlayerFormType>>
+  setPlayers: Dispatch<SetStateAction<PlayerFormType[]>>
   handleClose?: () => void
 }
 

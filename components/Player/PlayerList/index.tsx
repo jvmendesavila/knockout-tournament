@@ -10,13 +10,13 @@ import PlayerListField from './PlayerListField'
 
 // Style
 import useStyle from './style'
-import { PlayerType } from '../../../types/player'
+import { PlayerFormType } from '../../../types/player'
 
 interface PlayerListType {
-  players: PlayerType[]
+  players: PlayerFormType[]
   setOpen: Dispatch<SetStateAction<boolean>>
-  setPlayer: Dispatch<SetStateAction<PlayerType>>
-  setPlayers: Dispatch<SetStateAction<PlayerType[]>>
+  setPlayer: Dispatch<SetStateAction<PlayerFormType>>
+  setPlayers: Dispatch<SetStateAction<PlayerFormType[]>>
 }
 
 const PlayerList: React.FC<PlayerListType> = props => {
