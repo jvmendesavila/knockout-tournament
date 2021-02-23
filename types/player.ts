@@ -5,7 +5,7 @@ export interface PlayerFormType {
   email: string
 }
 
-export interface playerTableType {
+export interface PlayerTableType {
   jogador: string
   header: boolean
 }

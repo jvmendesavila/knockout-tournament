@@ -14,8 +14,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 // Custom Components
 import Header from '../components/Header'
-
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
@@ -33,5 +32,3 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     </ThemeProvider>
   )
 }
-
-export default MyApp

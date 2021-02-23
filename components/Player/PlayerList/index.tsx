@@ -19,7 +19,7 @@ interface PlayerListType {
   setPlayers: Dispatch<SetStateAction<PlayerFormType[]>>
 }
 
-const PlayerList: React.FC<PlayerListType> = props => {
+export default function PlayerList(props: PlayerListType) {
   const classes = useStyle()
 
   const handleEdit = player => () => {
@@ -80,5 +80,3 @@ const PlayerList: React.FC<PlayerListType> = props => {
     </Grid>
   )
 }
-
-export default PlayerList

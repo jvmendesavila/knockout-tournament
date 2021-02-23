@@ -64,7 +64,7 @@ interface DialogInterface {
   handleClose: () => void
 }
 
-const DialogComponent: React.FC<DialogInterface> = props => {
+export default function DialogComponent(props: DialogInterface) {
   return (
     <Dialog
       open={props.open}
@@ -78,5 +78,3 @@ const DialogComponent: React.FC<DialogInterface> = props => {
     </Dialog>
   )
 }
-
-export default DialogComponent

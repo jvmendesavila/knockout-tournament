@@ -9,7 +9,7 @@ interface PlayerFieldType {
   name: string
 }
 
-const PlayerListField: React.FC<PlayerFieldType> = ({ label, name }) => {
+export default function PlayerListField({ label, name }: PlayerFieldType) {
   const classes = useStyle()
   return (
     <Grid item xs={12} sm={6} md={3} className={classes.infoContainer}>
@@ -18,5 +18,3 @@ const PlayerListField: React.FC<PlayerFieldType> = ({ label, name }) => {
     </Grid>
   )
 }
-
-export default PlayerListField

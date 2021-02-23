@@ -15,7 +15,7 @@ import { toast } from 'react-toastify'
 import { PlayerFormType } from '../../../types/player'
 import FormTextField from '../FormTextField'
 
-interface PlayerFormType {
+interface PlayerFormComponentType {
   player?: PlayerFormType
   setPlayer: Dispatch<SetStateAction<PlayerFormType>>
   setPlayers: Dispatch<SetStateAction<PlayerFormType[]>>
@@ -42,7 +42,7 @@ const schema = Yup.object().shape({
     .required('Este campo é obrigatório')
 })
 
-const PlayerForm: React.FC<PlayerFormType> = props => {
+export default function PlayerForm(props: PlayerFormComponentType) {
   const classes = useStyle()
 
   const formInitialValues = {
@@ -175,5 +175,3 @@ const PlayerForm: React.FC<PlayerFormType> = props => {
     </Formik>
   )
 }
-
-export default PlayerForm

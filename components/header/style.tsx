@@ -16,14 +16,14 @@ const useStyles = makeStyles(theme => ({
     fontSize: 24,
     fontWeight: 'bold',
     paddingRight: 12,
-    '@media (max-width: 420px)': {
+    '@media (max-width: 600px)': {
       fontSize: 20
     }
   },
   logoImage: {
     cursor: 'pointer',
     height: 64,
-    '@media (max-width: 420px)': {
+    '@media (max-width: 600px)': {
       height: 52
     }
   }

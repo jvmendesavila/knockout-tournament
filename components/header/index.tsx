@@ -6,8 +6,7 @@ import { Grid, Typography } from '@material-ui/core'
 
 // Style
 import useStyle from './style'
-
-const Header: React.FC = () => {
+export default function Header() {
   const classes = useStyle()
   const { pathname } = useRouter()
   const hideHeader = ['/'].filter(route => route === pathname)
@@ -24,5 +23,3 @@ const Header: React.FC = () => {
     </Grid>
   )
 }
-
-export default Header

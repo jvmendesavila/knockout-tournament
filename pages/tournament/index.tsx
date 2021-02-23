@@ -7,12 +7,17 @@ import PlayerList from '../../components/Player/PlayerList'
 // Types
 import { PlayerFormType } from '../../types/player'
 
+// Material UI
+import TrophyIcon from '@material-ui/icons/EmojiEvents'
+import SortRoundedIcon from '@material-ui/icons/SortRounded'
+
 // Style
 import useStyle from './style'
 import PlayerDialog from '../../components/Dialog'
 import PlayerForm from '../../components/Form/PlayerForm'
+import Link from 'next/link'
 
-const Tournament: React.FC = () => {
+export default function Tournament() {
   const classes = useStyle()
   const [open, setOpen] = useState(false)
   const [player, setPlayer] = useState<PlayerFormType>()
@@ -37,7 +42,8 @@ const Tournament: React.FC = () => {
         <Grid container className={classes.container}>
           {/* Title */}
           <Grid container>
-            <Typography style={{ fontSize: 28, marginBottom: 32 }}>
+            <TrophyIcon color="primary" fontSize="large" />
+            <Typography style={{ fontSize: 28, margin: '0px 0px 32px 12px' }}>
               Meu Torneio
             </Typography>
           </Grid>
@@ -62,6 +68,19 @@ const Tournament: React.FC = () => {
             setOpen={setOpen}
             setPlayer={setPlayer}
           />
+          {/* Generate Keys */}
+          <Grid container justify="flex-end" style={{ marginTop: 24 }}>
+            <Link href="/tournament/keys">
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
+                <SortRoundedIcon color="secondary" />
+                Gerar Chaves
+              </Button>
+            </Link>
+          </Grid>
         </Grid>
       </Grid>
 
@@ -82,5 +101,3 @@ const Tournament: React.FC = () => {
     </>
   )
 }
-
-export default Tournament

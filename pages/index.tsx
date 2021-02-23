@@ -16,7 +16,7 @@ const buttons = [
   }
 ]
 
-const Home: React.FC = () => {
+export default function Home() {
   const classes = useStyle()
   return (
     <Grid container justify="center">
@@ -47,5 +47,3 @@ const Home: React.FC = () => {
     </Grid>
   )
 }
-
-export default Home
