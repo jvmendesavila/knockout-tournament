@@ -19,3 +19,7 @@ Este projeto foi desenvolvido com o intuito de automatizar a montagem de um sist
 A maior complexidade do problema consiste quando o sistema não possui uma quantidade de participantes equivalente a uma potência de 2, tornando o sistema assimétrico, para tornalo simétrico definimos alguns participantes como cabeça de chave, os quais avançam na primeira rodada com intuito de deixar a quantidade de jogos da segunda rodada equivalente a uma potencia de dois.
 
 A definição dos cabeça de chave pode ser feita de maneiras diferentes, e uma ampla distribuição feita na primeira rodada permite que, em uma situação onde os cabeças de chave são os favoritos, os mesmo terão menos chances de se enfrentar, promovendo partidas mais interessantes no final do sistema, uma característica buscada pelos campeonatos atuais nas montagens dos seus sistemas.
+
+## Resultados
+
+![](https://drive.google.com/file/d/1lKTRXmgjCm6Y2b1H4SQj8nmwOhLN3eXd/view?usp=sharing)
