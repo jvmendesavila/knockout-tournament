@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 // Material UI
-import { PlaylistAdd as PlaylistAddIcon } from '@material-ui/icons'
+import EmojiEventsIcon from '@material-ui/icons/EmojiEvents'
 import { Button, Grid, Typography } from '@material-ui/core'
 
 // Style
@@ -11,8 +11,8 @@ import useStyle from './style'
 const buttons = [
   {
     link: '/tournament',
-    label: 'Criar novo torneio',
-    icon: <PlaylistAddIcon style={{ fontSize: 32 }} />
+    label: 'Montar Torneio',
+    icon: <EmojiEventsIcon style={{ fontSize: 32 }} />
   }
 ]
 

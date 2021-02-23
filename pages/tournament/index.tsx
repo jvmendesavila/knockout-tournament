@@ -88,7 +88,7 @@ export default function Tournament() {
       <PlayerDialog
         open={open}
         handleClose={handleClose}
-        DialogTitle="Adicionar Participante"
+        DialogTitle={player ? 'Editar Participante' : 'Adicionar Participante'}
         DialogContent={
           <PlayerForm
             player={player}
