@@ -22,13 +22,15 @@ interface PlayerListType {
 export default function PlayerList(props: PlayerListType) {
   const classes = useStyle()
 
-  const handleEdit = player => () => {
+  const handleEdit = (player: PlayerFormType) => () => {
     props.setPlayer(player)
     props.setOpen(true)
   }
 
-  const handleDelete = player => () => {
-    let newPlayers = props.players.filter(p => p.id !== player.id)
+  const handleDelete = (player: PlayerFormType) => () => {
+    let newPlayers: PlayerFormType[] = props.players.filter(
+      p => p.id !== player.id
+    )
     newPlayers = newPlayers.map(p => ({
       ...p,
       id: p.id > player.id ? p.id - 1 : p.id

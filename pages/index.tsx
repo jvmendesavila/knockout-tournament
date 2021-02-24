@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ElementType } from 'react'
 import Link from 'next/link'
 
 // Material UI
@@ -8,7 +8,13 @@ import { Button, Grid, Typography } from '@material-ui/core'
 // Style
 import useStyle from './style'
 
-const buttons = [
+interface buttonType {
+  link: string
+  label: string
+  icon: JSX.Element
+}
+
+const buttons: buttonType[] = [
   {
     link: '/tournament',
     label: 'Montar Torneio',

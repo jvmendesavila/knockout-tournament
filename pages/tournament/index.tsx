@@ -19,12 +19,14 @@ import Link from 'next/link'
 
 export default function Tournament() {
   const classes = useStyle()
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState<boolean>(false)
   const [player, setPlayer] = useState<PlayerFormType>()
   const [players, setPlayers] = useState<PlayerFormType[]>([])
 
   useEffect(() => {
-    const playersLS = JSON.parse(localStorage.getItem('players'))
+    const playersLS: PlayerFormType[] = JSON.parse(
+      localStorage.getItem('players')
+    )
     if (playersLS) setPlayers(playersLS)
   }, [])
 
