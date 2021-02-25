@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Grid, Typography } from '@material-ui/core'
+import { NextRouter, useRouter } from 'next/router'
 
 // Custom Components
-import PlayerList from '../../components/Player/PlayerList'
+import PlayerDialog from '../../components/Dialog'
+import PlayerFormContainer from '../../components/Form/PlayerForm/index.container'
+import PlayerListContainer from '../../components/Player/List/index.container'
+
+// Alert
+import { toast } from 'react-toastify'
 
 // Types
 import { PlayerFormType } from '../../types/player'
@@ -10,15 +15,14 @@ import { PlayerFormType } from '../../types/player'
 // Material UI
 import TrophyIcon from '@material-ui/icons/EmojiEvents'
 import SortRoundedIcon from '@material-ui/icons/SortRounded'
+import { Button, Grid, Typography } from '@material-ui/core'
 
 // Style
 import useStyle from './style'
-import PlayerDialog from '../../components/Dialog'
-import PlayerForm from '../../components/Form/PlayerForm'
-import Link from 'next/link'
 
 export default function Tournament() {
   const classes = useStyle()
+  const router: NextRouter = useRouter()
   const [open, setOpen] = useState<boolean>(false)
   const [player, setPlayer] = useState<PlayerFormType>()
   const [players, setPlayers] = useState<PlayerFormType[]>([])
@@ -29,6 +33,12 @@ export default function Tournament() {
     )
     if (playersLS) setPlayers(playersLS)
   }, [])
+
+  const handleGenerateKeys = () => {
+    if (players.length < 2)
+      toast.warning('Cadastre pelo menos dois participantes no campeonato')
+    else router.push('/tournament/keys')
+  }
 
   const handleOpen = () => {
     setOpen(true)
@@ -64,7 +74,7 @@ export default function Tournament() {
           </Grid>
 
           {/* Player List */}
-          <PlayerList
+          <PlayerListContainer
             players={players}
             setPlayers={setPlayers}
             setOpen={setOpen}
@@ -72,16 +82,15 @@ export default function Tournament() {
           />
           {/* Generate Keys */}
           <Grid container justify="flex-end" style={{ marginTop: 24 }}>
-            <Link href="/tournament/keys">
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-              >
-                <SortRoundedIcon color="secondary" />
-                Gerar Chaves
-              </Button>
-            </Link>
+            <Button
+              color="primary"
+              onClick={handleGenerateKeys}
+              variant="contained"
+              className={classes.button}
+            >
+              <SortRoundedIcon color="secondary" />
+              Gerar Chaves
+            </Button>
           </Grid>
         </Grid>
       </Grid>
@@ -92,7 +101,7 @@ export default function Tournament() {
         handleClose={handleClose}
         DialogTitle={player ? 'Editar Participante' : 'Adicionar Participante'}
         DialogContent={
-          <PlayerForm
+          <PlayerFormContainer
             player={player}
             setPlayer={setPlayer}
             handleClose={handleClose}

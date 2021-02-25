@@ -3,14 +3,10 @@ import { useField } from 'formik'
 import InputMask from 'react-input-mask'
 
 type FormTextFieldType = TextFieldProps & {
-  name: string
-  disableError?: boolean
-  label: string
   mask?: string
-  placeholder?: string
 }
 
-export default function FormTextField({ label, ...props }: FormTextFieldType) {
+export default function FormTextField({ ...props }: FormTextFieldType) {
   const [field, meta] = useField(props.name)
   return (
     <InputMask {...field} maskChar={null} mask={props.mask}>
@@ -18,7 +14,9 @@ export default function FormTextField({ label, ...props }: FormTextFieldType) {
         <TextField
           {...field}
           {...props}
-          label={label}
+          inputProps={{
+            'data-testid': `text-field-${props['data-testid']}`
+          }}
           error={Boolean(meta.touched && meta.error)}
           helperText={(meta.touched && meta.error) || props.helperText}
         />

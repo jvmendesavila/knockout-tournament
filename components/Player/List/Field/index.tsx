@@ -9,7 +9,7 @@ interface PlayerFieldType {
   name: string
 }
 
-export default function PlayerListField({ label, name }: PlayerFieldType) {
+export default function PlayerField({ label, name }: PlayerFieldType) {
   const classes = useStyle()
   return (
     <Grid item xs={12} sm={6} md={3} className={classes.infoContainer}>

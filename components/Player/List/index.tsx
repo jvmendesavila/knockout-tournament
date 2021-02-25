@@ -6,7 +6,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 
 // Custom Components
-import PlayerListField from './PlayerListField'
+import PlayerField from './Field'
 
 // Style
 import useStyle from './style'
@@ -17,31 +17,15 @@ interface PlayerListType {
   setOpen: Dispatch<SetStateAction<boolean>>
   setPlayer: Dispatch<SetStateAction<PlayerFormType>>
   setPlayers: Dispatch<SetStateAction<PlayerFormType[]>>
+  handleEdit: (player: PlayerFormType) => void
+  handleDelete: (player: PlayerFormType) => void
 }
 
 export default function PlayerList(props: PlayerListType) {
   const classes = useStyle()
 
-  const handleEdit = (player: PlayerFormType) => () => {
-    props.setPlayer(player)
-    props.setOpen(true)
-  }
-
-  const handleDelete = (player: PlayerFormType) => () => {
-    let newPlayers: PlayerFormType[] = props.players.filter(
-      p => p.id !== player.id
-    )
-    newPlayers = newPlayers.map(p => ({
-      ...p,
-      id: p.id > player.id ? p.id - 1 : p.id
-    }))
-    localStorage.setItem('players', JSON.stringify([...newPlayers]))
-    props.setPlayers([...newPlayers])
-    props.setOpen(false)
-  }
-
   return (
-    <Grid container style={{ marginTop: 24 }}>
+    <Grid container style={{ marginTop: 24 }} data-testid="players-list">
       {props.players.map((player, index) => (
         <Grid
           container
@@ -50,13 +34,13 @@ export default function PlayerList(props: PlayerListType) {
           style={{ borderTop: index !== 0 && '1px solid gray' }}
         >
           {/* Name */}
-          <PlayerListField name={player.name} label="Nome" />
+          <PlayerField name={player.name} label="Nome" />
 
           {/* Phone */}
-          <PlayerListField name={player.phone} label="Celular" />
+          <PlayerField name={player.phone} label="Celular" />
 
           {/* Email */}
-          <PlayerListField name={player.email} label="Email" />
+          <PlayerField name={player.email} label="Email" />
 
           {/* Buttons */}
           <Grid item xs={12} md={3} className={classes.containerButtons}>
@@ -64,14 +48,15 @@ export default function PlayerList(props: PlayerListType) {
               <IconButton
                 color="primary"
                 style={{ margin: '0px 12px' }}
-                onClick={handleEdit(player)}
+                onClick={() => props.handleEdit(player)}
               >
                 <EditOutlinedIcon color="primary" />
               </IconButton>
               <IconButton
+                data-testid={`delete-button-${player.id}`}
                 color="primary"
                 style={{ margin: '0px 12px' }}
-                onClick={handleDelete(player)}
+                onClick={() => props.handleDelete(player)}
               >
                 <DeleteOutlineIcon color="primary" />
               </IconButton>

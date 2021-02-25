@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Grid, Typography } from '@material-ui/core'
+import { NextRouter, useRouter } from 'next/router'
+import Link from 'next/link'
 
 // Types
 import { PlayerFormType, PlayerTableType } from '../../../types/player'
 import { TournamentType } from '../../../types/tournament/keys'
 
+// Alerta
+import { toast } from 'react-toastify'
+
 // Material UI
+import { Grid, Typography } from '@material-ui/core'
 import TrophyIcon from '@material-ui/icons/EmojiEvents'
 import BackIcon from '@material-ui/icons/ArrowBackIosRounded'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 // Utility
 import { GenerateKeys } from '../../../shared/utility'
 
 // Style
 import useStyle from './style'
-import Link from 'next/link'
 
 export default function TournamentKeys() {
   const classes = useStyle()
+  const router: NextRouter = useRouter()
+  const [loading, setLoading] = useState<boolean>(true)
   const [tournament, setTournament] = useState<TournamentType>()
 
   // UseEffect
@@ -26,16 +33,24 @@ export default function TournamentKeys() {
     const playersLS: PlayerFormType[] = JSON.parse(
       localStorage.getItem('players')
     )
-    const playerTable: PlayerTableType[] = playersLS.map(pLS => ({
-      jogador: pLS.name,
-      header: false
-    }))
-    setTournament(GenerateKeys({ players: playerTable }))
+    if (playersLS.length < 2) {
+      router.push('/tournament')
+      toast.warning('Cadastre pelo menos dois participantes no campeonato')
+    } else {
+      const playerTable: PlayerTableType[] = playersLS.map(pLS => ({
+        jogador: pLS.name,
+        header: false
+      }))
+      setTournament(GenerateKeys({ players: playerTable }))
+      setLoading(false)
+    }
   }, [])
 
   return (
-    <>
-      <Grid container justify="center" className={classes.container}>
+    <Grid container justify="center" className={classes.container}>
+      {loading ? (
+        <CircularProgress color="secondary" style={{ marginTop: 120 }} />
+      ) : (
         <Grid container style={{ maxWidth: 1280 }}>
           {/* Back Link */}
           <Grid container className={classes.headerLink}>
@@ -140,19 +155,31 @@ export default function TournamentKeys() {
             <Grid container direction="column" justify="space-around">
               <Grid
                 container
-                direction="column"
+                wrap="nowrap"
                 alignItems="center"
-                style={{ margin: '0px 12px' }}
+                style={{ paddingRight: 12 }}
               >
-                <TrophyIcon color="secondary" style={{ fontSize: 128 }} />
-                <p className={classes.playerLabel}>
-                  {'Vencedor da ' + tournament?.winner}
-                </p>
+                <Grid container style={{ minWidth: 48 }}>
+                  <hr className={classes.hr} />
+                </Grid>
+                <Grid
+                  item
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                  }}
+                >
+                  <TrophyIcon color="secondary" style={{ fontSize: 128 }} />
+                  <p className={classes.playerLabel}>
+                    {'Vencedor da ' + tournament?.winner}
+                  </p>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </>
+      )}
+    </Grid>
   )
 }
