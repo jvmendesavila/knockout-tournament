@@ -1,14 +1,15 @@
-import { playerTableType } from '../../types/player'
+import { PlayerTableType } from '../../types/player'
 import {
   TournamentType,
   DefineHeadersType,
   DefineRoundsType,
   GenerateKeysType,
-  roundType
+  roundType,
+  gameType
 } from '../../types/tournament/keys'
 
 export function DefineHeaders({ symmetric, players }: DefineHeadersType) {
-  let customPlayers: playerTableType[] = players
+  let customPlayers: PlayerTableType[] = players
   if (symmetric % 1 !== 0) {
     let headerPosition: number = 0
     let headers: number = Math.pow(2, Math.ceil(symmetric)) - players.length

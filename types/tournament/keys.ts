@@ -1,18 +1,18 @@
-import { playerTableType } from '../player'
+import { PlayerTableType } from '../player'
 
 export interface DefineHeadersType {
   symmetric: number
-  players: playerTableType[]
+  players: PlayerTableType[]
 }
 
 export interface DefineRoundsType {
   symmetric: number
-  customPlayers: playerTableType[]
+  customPlayers: PlayerTableType[]
 }
 
 export interface gameType {
   game?: string
-  players: playerTableType[]
+  players: PlayerTableType[]
 }
 
 export interface roundType {
@@ -20,7 +20,7 @@ export interface roundType {
 }
 
 export interface GenerateKeysType {
-  players: playerTableType[]
+  players: PlayerTableType[]
 }
 
 export interface TournamentType {
